@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 })
 
 require('./src/routes/home.routes')(app)
+require('./src/routes/blog.routes')(app)
 
 const PORT = 5000
 app.listen(PORT, () => {
