@@ -11,9 +11,15 @@ exports.show = (req, res) => {
 }
 
 exports.create = (req, res) => {
-    res.render('blog/create')
+    res.render('blog/create', {
+        article: new Article()
+    })
 }
 
 exports.edit = (req, res) => {
     res.render('blog/edit')
+}
+
+exports.store = (req, res) => {
+    res.json(req.body)
 }

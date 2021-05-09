@@ -4,7 +4,8 @@ module.exports = (app) => {
 
     router.get('/create', blog.create)
     router.get('/:slug', blog.show)
-    router.get('/:slug/edit', blog.edit)
+    router.get('/:id/edit', blog.edit)
+    router.post('/', blog.store)
 
     app.use('/blog', router)
 }
