@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/idstack_blog', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 });
 
 app.set('views', './src/views')

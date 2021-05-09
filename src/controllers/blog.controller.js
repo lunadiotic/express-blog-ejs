@@ -2,7 +2,9 @@ const Article = require('../models/article.model')
 
 exports.show = async (req, res) => {
     try {
-        let article = await Article.findById(req.params.id)
+        let article = await Article.findOne({
+            slug: req.params.slug
+        })
         res.render('blog/show', {
             data: article
         })

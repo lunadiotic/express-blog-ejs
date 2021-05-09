@@ -3,7 +3,7 @@ module.exports = (app) => {
     const router = require('express').Router()
 
     router.get('/create', blog.create)
-    router.get('/:id', blog.show)
+    router.get('/:slug', blog.show)
     router.get('/:id/edit', blog.edit)
     router.post('/', blog.store)
 
