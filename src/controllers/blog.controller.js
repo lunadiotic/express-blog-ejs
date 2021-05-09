@@ -1,11 +1,14 @@
 const Article = require('../models/article.model')
 
 exports.show = async (req, res) => {
-    let article = await Article.findById(req.params.id)
-    if (article == null) res.redirect('/blog')
-    res.render('blog/show', {
-        data: article
-    })
+    try {
+        let article = await Article.findById(req.params.id)
+        res.render('blog/show', {
+            data: article
+        })
+    } catch (e) {
+        res.redirect('/home')
+    }
 }
 
 exports.create = (req, res) => {
