@@ -13,19 +13,29 @@ exports.show = (req, res) => {
 }
 
 exports.create = (req, res) => {
-    res.render('blog/create')
+    res.render('blog/create', {
+        article: new Article()
+    })
 }
 
 exports.edit = (req, res) => {
     res.render('blog/edit')
 }
 
-exports.store = (req, res) => {
+exports.store = async (req, res) => {
     let article = new Article({
         title: req.body.title,
         subtitle: req.body.subtitle,
         content: req.body.content,
+        date: req.body.date
     })
-    article.save()
-    res.json(article)
+
+    try {
+        article = await article.save()
+        res.redirect(`/blog/${article.id}`)
+    } catch (e) {
+        res.render('blog/create', {
+            article: article
+        })
+    }
 }
