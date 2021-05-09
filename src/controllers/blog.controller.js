@@ -1,14 +1,10 @@
 const Article = require('../models/article.model')
 
-exports.show = (req, res) => {
-    let data = {
-        title: 'Man must explore, and this is exploration at its greatest',
-        subtitle: 'Problems look mighty small from 150 miles up',
-        date: 'on September 24, 2021',
-        body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, suscipit, dolorum possimus provident, qui libero maiores delectus architecto soluta consequatur voluptatem illo ratione a laborum odit veritatis magni quam? Nulla!'
-    }
+exports.show = async (req, res) => {
+    let article = await Article.findById(req.params.id)
+    if (article == null) res.redirect('/blog')
     res.render('blog/show', {
-        data
+        data: article
     })
 }
 
