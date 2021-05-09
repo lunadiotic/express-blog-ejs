@@ -1,14 +1,10 @@
-exports.home = (req, res) => {
-    let data = [{
-        title: 'Man must explore, and this is exploration at its greatest',
-        subtitle: 'Problems look mighty small from 150 miles up',
-        date: 'on September 24, 2021'
-    }, {
-        title: 'I believe every human has a finite number of heartbeats. I don\'t intend to waste any of mine.',
-        subtitle: '',
-        date: 'on September 24, 2021'
-    }]
+const Article = require('../models/article.model')
+
+exports.home = async (req, res) => {
+    let articles = await Article.find().sort({
+        createdAt: 'desc'
+    })
     res.render('index', {
-        data
+        data: articles
     })
 }
