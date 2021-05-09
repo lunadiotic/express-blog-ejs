@@ -1,3 +1,5 @@
+const Article = require('../models/article.model')
+
 exports.show = (req, res) => {
     let data = {
         title: 'Man must explore, and this is exploration at its greatest',
@@ -11,9 +13,7 @@ exports.show = (req, res) => {
 }
 
 exports.create = (req, res) => {
-    res.render('blog/create', {
-        article: new Article()
-    })
+    res.render('blog/create')
 }
 
 exports.edit = (req, res) => {
@@ -21,5 +21,11 @@ exports.edit = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    res.json(req.body)
+    let article = new Article({
+        title: req.body.title,
+        subtitle: req.body.subtitle,
+        content: req.body.content,
+    })
+    article.save()
+    res.json(article)
 }

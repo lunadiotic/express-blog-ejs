@@ -1,5 +1,11 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/idstack_blog', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 app.set('views', './src/views')
 app.set('view engine', 'ejs')
