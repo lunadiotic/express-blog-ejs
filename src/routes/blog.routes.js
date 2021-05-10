@@ -6,6 +6,7 @@ module.exports = (app) => {
     router.get('/:slug', blog.show)
     router.get('/:id/edit', blog.edit)
     router.post('/', blog.store)
+    router.delete('/:id', blog.delete)
 
     app.use('/blog', router)
 }

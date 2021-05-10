@@ -40,3 +40,8 @@ exports.store = async (req, res) => {
         })
     }
 }
+
+exports.delete = async (req, res) => {
+    await Article.findByIdAndDelete(req.params.id)
+    res.redirect('/home')
+}

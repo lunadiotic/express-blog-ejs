@@ -34,12 +34,17 @@
                             Posted by
                             <a href="#!">Start Bootstrap</a>
                             <%= article.date %> 
+                            <button class="btn btn-link text-info">Edit</button>
+                            <button 
+                                class="btn btn-link text-danger"
+                                onclick="event.preventDefault(); document.getElementById('form-delete').submit();"
+                            >Delete</button>
+                            <form id="form-delete"  action="/blog/<%= article.id %>?_method=DELETE" method="post">
+                            </form>
                         </p>
                     </div>
                     <hr />
                     <% }) %>
-                    <!-- Pager-->
-                    <div class="clearfix"><a class="btn btn-primary float-right" href="#!">Older Posts →</a></div>
                 </div>
             </div>
         </div>
