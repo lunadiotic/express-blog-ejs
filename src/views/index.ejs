@@ -34,7 +34,7 @@
                             Posted by
                             <a href="#!">Start Bootstrap</a>
                             <%= article.date %> 
-                            <button class="btn btn-link text-info">Edit</button>
+                            <a href="/blog/<%= article.id %>/edit" class="btn btn-link text-info">Edit</a>
                             <button 
                                 class="btn btn-link text-danger"
                                 onclick="event.preventDefault(); document.getElementById('form-delete').submit();"
