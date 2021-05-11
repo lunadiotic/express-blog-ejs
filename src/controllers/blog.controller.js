@@ -33,12 +33,11 @@ exports.edit = async (req, res) => {
 exports.update = async (req, res) => {
     try {
         let article = await Article.findById(req.params.id)
-        await article.updateOne({
-            title: req.body.title,
-            subtitle: req.body.subtitle,
-            content: req.body.content,
-            date: req.body.date
-        })
+        article.title = req.body.title
+        article.subtitle = req.body.subtitle
+        article.content = req.body.content
+        article.date = req.body.date
+        await article.save()
         res.redirect(`/blog/${article.slug}`)
     } catch (e) {
         res.render('blog/edit', {
