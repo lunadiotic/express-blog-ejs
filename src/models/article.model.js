@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const marked = require('marked')
 const slugify = require('slugify')
+const sanitizeHtml = require('sanitize-html')
 
 const articleSchema = new mongoose.Schema({
     title: {
@@ -23,7 +23,7 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
 })
 
 articleSchema.pre('validate', function (next) {
@@ -32,6 +32,10 @@ articleSchema.pre('validate', function (next) {
             lower: true,
             strict: true
         })
+    }
+
+    if (this.content) {
+        this.content = sanitizeHtml(this.content)
     }
 
     next()

@@ -33,7 +33,7 @@ exports.edit = async (req, res) => {
 exports.update = async (req, res) => {
     try {
         let article = await Article.findById(req.params.id)
-        await article.update({
+        await article.updateOne({
             title: req.body.title,
             subtitle: req.body.subtitle,
             content: req.body.content,
